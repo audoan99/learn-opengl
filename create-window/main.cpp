@@ -43,7 +43,7 @@ int main(int argc, char** argv)
     int y = 100;
     glutInitWindowPosition(x,y);
     int win = glutCreateWindow("tutorial-1");
-    printf("Windown ID: %d\n", win);
+    printf("Window ID: %d\n", win);
 
     // GLclampf Red = 1.0f, Green = 0.0f, Blue = 0.0f, Alpha = 0.0f;
     // glClearColor(Red, Green, Blue, Alpha);

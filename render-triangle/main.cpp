@@ -38,7 +38,7 @@ static void RenderSceneCB()
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-    glDrawArrays(GL_POINTS, 0, 1);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
 
     glDisableVertexAttribArray(0);
 
@@ -48,8 +48,13 @@ static void RenderSceneCB()
 
 static void CreateVertexBuffer()
 {
-    Vector3f Vertices[1];
-    Vertices[0] = Vector3f(0.0f, 0.0f, 0.0f);
+    glEnable(GL_CULL_FACE);
+    // glFrontFace(GL_CW);
+    // glCullFace(GL_FRONT);
+    Vector3f Vertices[3];
+    Vertices[0] = Vector3f(-1.0f, -1.0f, 0.0f); // bottom left
+    Vertices[1] = Vector3f(1.0f, -1.0f, 0.0f); // bottom right
+    Vertices[2] = Vector3f(0.0f, 1.0f, 0.0f); // top
 
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -69,7 +74,7 @@ int main(int argc, char** argv)
     int x = 200;
     int y = 100;
     glutInitWindowPosition(x, y);
-    int win = glutCreateWindow("tutorial-2");
+    int win = glutCreateWindow("tutorial-3");
     printf("window id: %d\n", win);
 
     // Must be done after glut is initialized!
